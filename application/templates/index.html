@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Evaluation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ </head>
+<body>
+        <h2>Evaluation App for Business improvement in Ecommerce.</h2>
+        <h3>Enter your product info</h3>
+        <form name="carform" id="carform" action = "{{ url_for('carclassify') }}" method="POST">
+            <label for="fname">Count of sold out:</label>
+                <input type="number" id="integerInput" name = "buying">                 
+            <label for="fname">Review score of the product:</label>
+                 <input type="number" id="integerInput" name = "maint">      
+            <label for="fname">Price of the product:</label>
+                    <input type="number" id="integerInput" name = "doors">
+            <br><br>
+            <label for="fname">Delivery Charges:</label>
+                    <input type="number" id="integerInput" name = "buy1">                 
+            <label for="fname">Product height:</label>
+                     <input type="number" id="integerInput" name = "buy2"> 
+            <br><br>
+            <label for="fname">Product weight:</label>
+                    <input type="number" id="integerInput" name = "buy3">
+             <label for="fname">Product width:</label>
+                    <input type="number" id="integerInput" name = "buy4">
+             <br><br>       
+            <label for="fname">Delivery distance:</label>
+                    <input type="number" id="integerInput" name = "buy5">
+
+
+            <input type="hidden" id="forminput" name="forminput"  >            
+            <p><input type="submit" value="Evaluate my product"></p>
+             {% if (results) %} 
+             <h2> Action Need on this product: {{ results[1] }}  </h2>
+             <h3> Discount to increase sales: {{ results[0] }}  </h3>
+             <p> for following features: </p>
+             <p> Count: {{buying}} </p>
+             <p> Rating: {{maint}} </p>
+             <p> Price: {{doors}}</p>
+             <p> MSE: {{results[2]}}</p>
+
+             <h2> Delivery prediction: {{ results[3] }}  </h2>
+             <p> for following features: </p>
+             <p> Charges : {{buy1}} </p>
+             <p> Product height: {{buy2}} </p>
+             <p> Product weight: {{buy3}}</p>
+             <p> Product width: {{buy4}}</p>
+             <p> Delivery distance: {{buy5}}</p>
+             <p> Accuracy: {{results[4]}}</p>
+             {% endif %} 
+        </form>
+</body>
+</html>
